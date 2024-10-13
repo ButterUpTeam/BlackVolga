@@ -1,7 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://7w4igggya3d8"]
+[gd_scene load_steps=4 format=3 uid="uid://7w4igggya3d8"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_4agxc"]
 [ext_resource type="PackedScene" uid="uid://cgp1g5obccafh" path="res://scene/level.tscn" id="1_y14ym"]
+[ext_resource type="PackedScene" uid="uid://p7fcnhu3oqv1" path="res://scene/car.tscn" id="2_ggxdh"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_4agxc")
 
 [node name="Level" parent="." instance=ExtResource("1_y14ym")]
+
+[node name="player" parent="." instance=ExtResource("2_ggxdh")]
+position = Vector2(108, 91)
+
+[node name="Camera" type="Camera2D" parent="player"]
+zoom = Vector2(5, 5)
+
+[node name="police" parent="." instance=ExtResource("2_ggxdh")]
+position = Vector2(660, 252)
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="police"]

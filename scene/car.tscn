@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://p7fcnhu3oqv1"]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_m3oda"]
+[ext_resource type="Texture2D" uid="uid://bn0a80m7dt5er" path="res://assets/car.png" id="1_tchmq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_metos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxja5"]
+size = Vector2(12, 18)
+
+[node name="Car" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_m3oda")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_metos")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_tchmq")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sxja5")
