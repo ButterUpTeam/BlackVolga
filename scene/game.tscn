@@ -19,5 +19,6 @@ zoom = Vector2(5, 5)
 
 [node name="Police" parent="." instance=ExtResource("4_8n4nf")]
 position = Vector2(137, 208)
+MAX_SPEED = 190.0
 
 [connection signal="player_moved" from="Player" to="Police" method="_on_player_player_moved"]
