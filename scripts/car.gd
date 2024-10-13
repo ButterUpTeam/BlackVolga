@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
+class_name Car
+
 @export var MAX_SPEED = 200.0
 @export var ACCELEARTION = 1000
 @export var ROTATION_SPEED = 240
+
 
 class InputValues:
 	var right: bool
@@ -10,24 +13,18 @@ class InputValues:
 	var direction: int
 	var up: bool
 
-func _physics_process(delta: float) -> void:
-	var input = get_input()
-	calculate_rotation(delta, input)
-	calculate_velocity(delta, input)
 
-	move_and_slide()
-
-func calculate_velocity(delta: float, input: InputValues) -> void:
-	if input.up:
+func calculate_velocity(delta: float, accelerate: bool) -> void:
+	if accelerate:
 		velocity += (Vector2.UP * ACCELEARTION * delta).rotated(rotation)
 		velocity = velocity if velocity.length() < MAX_SPEED else velocity.normalized() * MAX_SPEED
 	else:
 		velocity -= (Vector2.UP * ACCELEARTION * delta).rotated(rotation)
-		velocity = velocity if velocity.length() < 0 else velocity.normalized() * 0
+		velocity = velocity if velocity.length() < 0 else Vector2.ZERO
 
 
-func calculate_rotation(delta: float, input: InputValues) -> void:
-	rotation_degrees += delta * ROTATION_SPEED * input.direction
+func calculate_rotation(delta: float, direction: int) -> void:
+	rotation_degrees += delta * ROTATION_SPEED * direction
 
 
 func get_input() -> InputValues:

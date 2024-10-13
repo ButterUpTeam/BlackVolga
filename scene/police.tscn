@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://x8sw8rl4pgps"]
+
+[ext_resource type="PackedScene" uid="uid://p7fcnhu3oqv1" path="res://scene/car.tscn" id="1_0tg71"]
+[ext_resource type="Script" path="res://scripts/police.gd" id="2_57dmq"]
+
+[node name="Police" instance=ExtResource("1_0tg71")]
+script = ExtResource("2_57dmq")
+
+[node name="Sprite" parent="." index="0"]
+self_modulate = Color(1, 0.04, 0.04, 1)
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." index="2"]
+debug_enabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="3"]
+polygon = PackedVector2Array(-3, -17, 3, -17, 3, 0, -3, 0)
