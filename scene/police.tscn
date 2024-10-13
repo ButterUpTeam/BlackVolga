@@ -11,6 +11,3 @@ self_modulate = Color(1, 0.04, 0.04, 1)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="2"]
 debug_enabled = true
-
-[node name="Polygon2D" type="Polygon2D" parent="." index="3"]
-polygon = PackedVector2Array(-3, -17, 3, -17, 3, 0, -3, 0)
