@@ -6,7 +6,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_metos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxja5"]
-size = Vector2(12, 18)
+size = Vector2(12, 17)
 
 [node name="Car" type="CharacterBody2D"]
 motion_mode = 1
@@ -15,9 +15,10 @@ script = ExtResource("1_m3oda")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_metos")
+position = Vector2(0, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_tchmq")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_sxja5")

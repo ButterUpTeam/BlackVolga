@@ -10,7 +10,7 @@ script = ExtResource("1_4agxc")
 [node name="Level" parent="." instance=ExtResource("1_y14ym")]
 
 [node name="player" parent="." instance=ExtResource("2_ggxdh")]
-position = Vector2(108, 91)
+position = Vector2(79, 319)
 
 [node name="Camera" type="Camera2D" parent="player"]
 zoom = Vector2(5, 5)
