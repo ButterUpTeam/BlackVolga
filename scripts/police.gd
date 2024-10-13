@@ -9,7 +9,8 @@ func _physics_process(delta: float) -> void:
 	var move_vector: Vector2 = destination - global_position
 	var obj_vector = Vector2.UP.rotated(rotation)
 	var angle_to = obj_vector.angle_to(move_vector) #.angle() - rotation + (PI / 2)
-	calculate_rotation(delta, -1 if angle_to < 0 else 1)
+	if not abs(angle_to) < 0.1:
+		calculate_rotation(delta, -1 if angle_to < 0 else 1)
 	calculate_velocity(delta, true)
 	move_and_slide()
 
