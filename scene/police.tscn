@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://p7fcnhu3oqv1" path="res://scene/car.tscn" id="1_0tg71"]
 [ext_resource type="Script" path="res://scripts/police.gd" id="2_57dmq"]
 
-[node name="Police" instance=ExtResource("1_0tg71")]
+[node name="Police" groups=["police"] instance=ExtResource("1_0tg71")]
 script = ExtResource("2_57dmq")
 
 [node name="Sprite" parent="." index="0"]

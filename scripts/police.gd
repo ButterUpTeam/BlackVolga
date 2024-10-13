@@ -1,4 +1,5 @@
 extends Car
+class_name Police
 
 @onready var navigation = $NavigationAgent
 
@@ -15,5 +16,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_player_player_moved(player_position: Vector2) -> void:
+func on_player_player_moved(player_position: Vector2) -> void:
 	navigation.target_position = player_position

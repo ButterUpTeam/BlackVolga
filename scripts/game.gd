@@ -2,8 +2,5 @@ extends Node2D
 
 
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-func _process(delta: float) -> void:
-	pass
+	for police: Police in get_tree().get_nodes_in_group("police"):
+		$Player.player_moved.connect(police.on_player_player_moved)
