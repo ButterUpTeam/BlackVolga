@@ -1,4 +1,5 @@
 extends Car
+class_name Player
 
 signal player_moved(position: Vector2)
 

@@ -33,3 +33,9 @@ MAX_SPEED = 190.0
 [node name="Police4" parent="." instance=ExtResource("4_8n4nf")]
 position = Vector2(1546, 1280)
 MAX_SPEED = 190.0
+
+[node name="police_spawn" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="police_spawn" to="." method="_on_police_spawn_timeout"]

@@ -15,6 +15,8 @@ func _physics_process(delta: float) -> void:
 	calculate_velocity(delta, true)
 	move_and_slide()
 
+func observe_player_movement(movement_signal: Signal):
+	movement_signal.connect(self.on_player_player_moved)
 
 func on_player_player_moved(player_position: Vector2) -> void:
 	navigation.target_position = player_position
