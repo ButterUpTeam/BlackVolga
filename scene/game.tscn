@@ -11,22 +11,23 @@ script = ExtResource("1_4agxc")
 [node name="Level" parent="." instance=ExtResource("1_y14ym")]
 
 [node name="Player" parent="." instance=ExtResource("4_x00h2")]
-position = Vector2(91, 249)
+position = Vector2(99, 222)
+rotation = 1.5708
 metadata/_edit_group_ = true
 
 [node name="Camera" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)
 
 [node name="Police" parent="." instance=ExtResource("4_8n4nf")]
-position = Vector2(1564, 1049)
+position = Vector2(1514, 1039)
 MAX_SPEED = 190.0
 
 [node name="Police2" parent="." instance=ExtResource("4_8n4nf")]
-position = Vector2(1935, 1889)
+position = Vector2(2092, 1871)
 MAX_SPEED = 190.0
 
 [node name="Police3" parent="." instance=ExtResource("4_8n4nf")]
-position = Vector2(2844, 909)
+position = Vector2(2717, 876)
 MAX_SPEED = 190.0
 
 [node name="Police4" parent="." instance=ExtResource("4_8n4nf")]

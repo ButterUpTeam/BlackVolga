@@ -6,7 +6,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_metos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxja5"]
-size = Vector2(12, 17)
+size = Vector2(15, 22)
 
 [node name="Car" type="CharacterBody2D"]
 motion_mode = 1

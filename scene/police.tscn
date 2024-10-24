@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://x8sw8rl4pgps"]
+[gd_scene load_steps=4 format=3 uid="uid://x8sw8rl4pgps"]
 
 [ext_resource type="PackedScene" uid="uid://p7fcnhu3oqv1" path="res://scene/car.tscn" id="1_0tg71"]
 [ext_resource type="Script" path="res://scripts/police.gd" id="2_57dmq"]
+[ext_resource type="Texture2D" uid="uid://berakjx8he5fg" path="res://assets/police-car.png" id="3_upfuk"]
 
 [node name="Police" groups=["police"] instance=ExtResource("1_0tg71")]
 script = ExtResource("2_57dmq")
 
 [node name="Sprite" parent="." index="0"]
-self_modulate = Color(1, 0.04, 0.04, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_upfuk")
+
+[node name="CollisionShape" parent="." index="1"]
+position = Vector2(-0.5, -1)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="2"]
-debug_enabled = true
