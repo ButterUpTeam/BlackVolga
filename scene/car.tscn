@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://p7fcnhu3oqv1"]
+[gd_scene load_steps=7 format=3 uid="uid://p7fcnhu3oqv1"]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_m3oda"]
-[ext_resource type="Texture2D" uid="uid://bn0a80m7dt5er" path="res://assets/car.png" id="1_tchmq"]
+[ext_resource type="Texture2D" uid="uid://d3ufd0jpg02fl" path="res://assets/black-volga-car.png" id="2_d23ar"]
+[ext_resource type="Texture2D" uid="uid://dfqlrare3u5qg" path="res://assets/car_light.png" id="3_ee3lw"]
+[ext_resource type="Texture2D" uid="uid://dilltk3m8ebj8" path="res://assets/2d_lights_and_shadows_neutral_point_light.webp" id="4_jdn3l"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_metos"]
 
@@ -10,13 +12,47 @@ size = Vector2(15, 22)
 
 [node name="Car" type="CharacterBody2D"]
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_m3oda")
+metadata/_edit_lock_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_metos")
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_tchmq")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_d23ar")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_sxja5")
+
+[node name="LeftFontLight" type="PointLight2D" parent="."]
+position = Vector2(-3, -82)
+color = Color(0.899251, 1, 0.61863, 1)
+energy = 0.5
+texture = ExtResource("3_ee3lw")
+
+[node name="RightFrontLight" type="PointLight2D" parent="."]
+position = Vector2(3, -80)
+color = Color(0.899251, 1, 0.61863, 1)
+energy = 0.5
+texture = ExtResource("3_ee3lw")
+
+[node name="RightBackLight" type="PointLight2D" parent="."]
+position = Vector2(5, 10)
+color = Color(0.673164, 0.959393, 0.112105, 1)
+energy = 0.5
+range_z_min = -10
+range_z_max = 10
+texture = ExtResource("4_jdn3l")
+texture_scale = 0.05
+
+[node name="LeftBackLight" type="PointLight2D" parent="."]
+position = Vector2(-5, 10)
+color = Color(0.673164, 0.959393, 0.112105, 1)
+energy = 0.5
+texture = ExtResource("4_jdn3l")
+texture_scale = 0.05
+
+[node name="Central" type="PointLight2D" parent="."]
+energy = 0.4
+texture = ExtResource("4_jdn3l")
+texture_scale = 0.2

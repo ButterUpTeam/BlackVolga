@@ -1,18 +1,106 @@
-[gd_scene load_steps=4 format=3 uid="uid://x8sw8rl4pgps"]
+[gd_scene load_steps=8 format=3 uid="uid://x8sw8rl4pgps"]
 
 [ext_resource type="PackedScene" uid="uid://p7fcnhu3oqv1" path="res://scene/car.tscn" id="1_0tg71"]
 [ext_resource type="Script" path="res://scripts/police.gd" id="2_57dmq"]
 [ext_resource type="Texture2D" uid="uid://berakjx8he5fg" path="res://assets/police-car.png" id="3_upfuk"]
+[ext_resource type="Texture2D" uid="uid://dilltk3m8ebj8" path="res://assets/2d_lights_and_shadows_neutral_point_light.webp" id="4_vrjjp"]
+
+[sub_resource type="Animation" id="Animation_ef2oa"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cnuy3"]
+resource_name = "lights"
+length = 2.0
+loop_mode = 1
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AlarmLeftLight:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.673164, 0.959393, 0.112105, 1), Color(0.484768, 0.258258, 1.44392e-07, 1), Color(0.673164, 0.959393, 0.112105, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AlarmRightLight:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.484768, 0.258258, 1.44392e-07, 1), Color(0.673164, 0.959393, 0.112105, 1), Color(0.484768, 0.258258, 1.44392e-07, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y220b"]
+_data = {
+"RESET": SubResource("Animation_ef2oa"),
+"lights": SubResource("Animation_cnuy3")
+}
 
 [node name="Police" groups=["police"] instance=ExtResource("1_0tg71")]
-position = Vector2(13, 0)
 script = ExtResource("2_57dmq")
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_upfuk")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_y220b")
+}
+autoplay = "lights"
+speed_scale = 3.0
+movie_quit_on_finish = true
+
 [node name="CollisionShape" parent="." index="1"]
+visible = false
 position = Vector2(-0.5, -1)
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="2"]
+
+[node name="AlarmLeftLight" type="PointLight2D" parent="." index="3"]
+position = Vector2(-2, 0)
+color = Color(0.532407, 0.435552, 0.0283478, 1)
+energy = 2.0
+range_z_min = -10
+range_z_max = 10
+texture = ExtResource("4_vrjjp")
+texture_scale = 0.05
+
+[node name="AlarmRightLight" type="PointLight2D" parent="." index="4"]
+position = Vector2(2, 0)
+color = Color(0.625525, 0.782099, 0.0837573, 1)
+energy = 2.0
+texture = ExtResource("4_vrjjp")
+texture_scale = 0.05

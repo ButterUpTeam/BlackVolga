@@ -13,7 +13,3 @@ func _on_police_spawn_timeout() -> void:
 	police_character.global_position = spawn_point.global_position
 	add_child(police_character)
 	police_character.observe_player_movement($Player.player_moved)
-
-	print("Spawned")
-
-
