@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://7w4igggya3d8"]
+[gd_scene load_steps=7 format=3 uid="uid://7w4igggya3d8"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4agxc"]
 [ext_resource type="PackedScene" uid="uid://cgp1g5obccafh" path="res://scene/level.tscn" id="1_y14ym"]
 [ext_resource type="PackedScene" uid="uid://x8sw8rl4pgps" path="res://scene/police.tscn" id="4_8n4nf"]
 [ext_resource type="PackedScene" uid="uid://cypql1vnonbm1" path="res://scene/Player.tscn" id="4_x00h2"]
+[ext_resource type="Shader" path="res://shader/crt.gdshader" id="5_qwbup"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv22b"]
+shader = ExtResource("5_qwbup")
+shader_parameter/crt_brightnes = 1.0
+shader_parameter/crt_ghost = 3.166
+shader_parameter/crt_grid = 0.71
+shader_parameter/crt_white_noise = 0.14
+shader_parameter/crt_curve = 0.313
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_4agxc")
@@ -44,6 +53,17 @@ wait_time = 5.0
 autostart = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.0323822, 0.0323822, 0.0323822, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_bv22b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="police_spawn" to="." method="_on_police_spawn_timeout"]
